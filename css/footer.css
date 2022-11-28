@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+}
+
+.footer__copyright {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: #6c757d;
+  padding-top: 13px;
+  padding-bottom: 17px;
+}
+
+.footer__line {
+  border-top: 1px solid #ced4da;
+  width: 100%;
+}
