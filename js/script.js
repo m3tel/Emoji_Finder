@@ -1,4 +1,5 @@
 import { data } from "./emoji.js";
+const grid = document.querySelector(".grid");
 function createItem(obj) {
   const item = document.createElement("div");
   const emoji = document.createElement("div");
@@ -20,13 +21,17 @@ function createItem(obj) {
 
   return item;
 }
-const grid = document.querySelector(".grid");
+data.forEach((item) => grid.append(createItem(item)));
 
-grid.append(
-  createItem({
-    title: "100",
-    symbol: "💯",
-    keywords:
-      "hundred points symbol symbol wow wow win win perfect perfect parties parties",
-  })
-);
+let input = document.querySelector(".header__input");
+
+function searchData() {
+  const newData = data.filter(
+    (item) =>
+      item.title.includes(input.value.trim().toLowerCase()) ||
+      item.keywords.includes(input.value.trim().toLowerCase())
+  );
+  grid.innerHTML = "";
+  newData.forEach((item) => grid.append(createItem(item)));
+}
+input.addEventListener("input", searchData);
