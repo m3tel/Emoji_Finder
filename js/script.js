@@ -1,5 +1,9 @@
 import { data } from "./emoji.js";
+
 const grid = document.querySelector(".grid");
+const secondData = uniq(data);
+let input = document.querySelector(".header__input");
+
 function createItem(obj) {
   const item = document.createElement("div");
   const emoji = document.createElement("div");
@@ -21,12 +25,21 @@ function createItem(obj) {
 
   return item;
 }
-data.forEach((item) => grid.append(createItem(item)));
 
-let input = document.querySelector(".header__input");
+function createCard() {
+  secondData.forEach((item) => grid.append(createItem(item)));
+}
+createCard();
+
+function uniq(data) {
+  return data.map((emoji) => ({
+    ...emoji,
+    keywords: [...new Set(emoji.keywords.split(" "))].join(" "),
+  }));
+}
 
 function searchData() {
-  const newData = data.filter(
+  const newData = secondData.filter(
     (item) =>
       item.title.includes(input.value.trim().toLowerCase()) ||
       item.keywords.includes(input.value.trim().toLowerCase())
