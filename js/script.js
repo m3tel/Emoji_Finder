@@ -2,7 +2,7 @@ import { data } from "./emoji.js";
 
 const grid = document.querySelector(".grid");
 const secondData = uniq(data);
-let input = document.querySelector(".header__input");
+const input = document.querySelector(".header__input");
 
 function createItem(obj) {
   const item = document.createElement("div");
@@ -26,10 +26,10 @@ function createItem(obj) {
   return item;
 }
 
-function createCard() {
+function createCards() {
   secondData.forEach((item) => grid.append(createItem(item)));
 }
-createCard();
+createCards();
 
 function uniq(data) {
   return data.map((emoji) => ({
