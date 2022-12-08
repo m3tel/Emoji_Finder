@@ -1,6 +1,5 @@
-import { data } from "./emoji.js";
-
 const grid = document.querySelector(".grid");
+const data = await getData();
 const secondData = uniq(data);
 const input = document.querySelector(".header__input");
 
@@ -24,6 +23,12 @@ function createItem(obj) {
   item.append(info);
 
   return item;
+}
+
+async function getData() {
+  let response = await fetch("https://emoji.ymatuhin.workers.dev/");
+  let data = await response.json();
+  return data;
 }
 
 function createCards() {
